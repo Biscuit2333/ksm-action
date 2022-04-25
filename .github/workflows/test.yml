@@ -20,7 +20,7 @@ jobs:
     environment: prod
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - uses: ./
         id: ksm
         with:
@@ -34,7 +34,8 @@ jobs:
             b7K1o8Fwoot8bryzH6pZJg/file/ch.txt > file:./ch1.txt
       - name: Print secrets
         run: |
-          echo "Username is ${{ steps.ksm.outputs.username }}"
+          printenv
+          echo ${{ JSON.stringify(steps.ksm.outputs) }}
 
       - uses: Keeper-Security/ksm-action@master
         id: ksm2
